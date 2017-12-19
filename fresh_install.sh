@@ -92,5 +92,8 @@ sudo pip3 install virtualenv
 sudo pip3 install pew
 sudo pip3 install pipenv
 
+sudo apt-get install exfat-fuse exfat-utils
+
+sudo apt-get install default-jre
 
 
