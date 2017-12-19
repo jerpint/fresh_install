@@ -29,9 +29,9 @@ ssh-keygen -t rsa -C "jeremy@focus21.io" -b 4096
 # cat ~/.ssh/id_rsa.pub
 git config --global user.name "Jeremy Pinto"
 git config --global user.email "jeremy@focus21.io"
+git config --global push.default simple
 
-
-# sudo apt install python-pip 
+# sudo apt install python-pip
 # sudo pip install virtualenv
 # sudo pip install pew
 # sudo pip install pipenv
