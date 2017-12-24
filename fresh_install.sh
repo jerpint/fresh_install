@@ -96,4 +96,5 @@ sudo apt-get install exfat-fuse exfat-utils
 
 sudo apt-get install default-jre
 
-
+sudo apt install vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
