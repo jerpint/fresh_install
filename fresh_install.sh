@@ -98,3 +98,12 @@ sudo apt-get install default-jre
 
 sudo apt install vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+sudo apt install i3
+sudo apt install i3-blocks
+rm ~/.config/i3/config && ln -s ~/fresh_install/dotfiles/i3_config ~/.config/i3/config
+
+sudo apt install help2man
+git clone https://github.com/haikarainen/light.git
+cd light
+sudo make
+sudo make install
