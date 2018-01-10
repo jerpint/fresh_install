@@ -13,7 +13,7 @@ Plugin 'git://github.com/airblade/vim-gitgutter.git'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'https://github.com/tpope/vim-fugitive.git' 
+Plugin 'https://github.com/tpope/vim-fugitive.git'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -99,5 +99,10 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+<<<<<<< HEAD
 set t_Co=256
-colorscheme onedark 
+colorscheme onedark
+=======
+
+colorscheme molokai
+>>>>>>> 33ea1b665da7f94a81db733b160cd913fec128c1
