@@ -91,9 +91,20 @@ sudo apt install python3-pip
 sudo pip3 install virtualenv
 sudo pip3 install pew
 sudo pip3 install pipenv
+sudo pip3 install jupyter
 
 sudo apt-get install exfat-fuse exfat-utils
 
 sudo apt-get install default-jre
 
-
+sudo apt install vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#sudo apt install i3
+#sudo apt install i3blocks
+#rm ~/.config/i3/config && ln -s ~/fresh_install/dotfiles/i3_config ~/.config/i3/config
+#
+#sudo apt install help2man
+#git clone https://github.com/haikarainen/light.git
+#cd light
+#sudo make
+#sudo make install
