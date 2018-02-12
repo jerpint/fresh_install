@@ -92,6 +92,9 @@ sudo pip3 install virtualenv
 sudo pip3 install pew
 sudo pip3 install pipenv
 sudo pip3 install jupyter
+sudo pip3 install jupyter_contrib_nbextensions
+jupyter contrib nbextension install --user
+
 
 sudo apt-get install exfat-fuse exfat-utils
 
