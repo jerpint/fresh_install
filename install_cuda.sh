@@ -15,4 +15,4 @@ echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/
 echo 'export CUDA_HOME=/usr/local/cuda' >> ~/.bashrc
 source ~/.bashrc
 sudo apt-get install libcupti-dev
-sudo pip3 install --upgrade tensorflow-gpu
+sudo pip3 install --upgrade tensorflow-gpu==1.4.0
