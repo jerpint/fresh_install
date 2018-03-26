@@ -111,3 +111,36 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #cd light
 #sudo make
 #sudo make install
+
+alias jpnb="jupyter notebook"
+
+mkdir ~/.git_files
+sudo cp ~/fresh_install/dotfiles/git-prompt.sh ~/.git_files/
+sudo cp ~/fresh_install/dotfiles/diff-so-fancy ~/.git_files/
+
+chmod +x ~/.git_files/diff-so-fancy
+
+git config --global core.pager "~/.git_files/diff-so-fancy | less --tabs=4 -RFX"
+git config --global color.ui true
+
+git config --global color.diff-highlight.oldNormal    "red bold"
+git config --global color.diff-highlight.oldHighlight "red bold 52"
+git config --global color.diff-highlight.newNormal    "green bold"
+git config --global color.diff-highlight.newHighlight "green bold 22"
+
+git config --global color.diff.meta       "yellow"
+git config --global color.diff.frag       "magenta bold"
+git config --global color.diff.commit     "yellow bold"
+git config --global color.diff.old        "red bold"
+git config --global color.diff.new        "green bold"
+git config --global color.diff.whitespace "red reverse"
+
+
+echo 'export CUDA_HOME=/usr/local/cuda' >> ~/.bashrc
+
+# Git prompt (add branch name to terminal display)                                                 
+echo 'export GIT_PS1_SHOWDIRTYSTATE=1' >> ~/.bashrc
+echo 'export GIT_PS1_SHOWCOLORHINTS=true' >> ~/.bashrc
+echo 'export PROMPT_COMMAND='__git_ps1 "\w" "\\\$ " " (%9s)"'' >> ~/.bashrc
+echo ' . ~/.git_files/git-prompt.sh' >> ~/.bashrc
+
