@@ -95,6 +95,9 @@ sudo pip3 install jupyter
 sudo pip3 install jupyter_contrib_nbextensions
 jupyter contrib nbextension install --user
 
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get update
+sudo apt-get install python3.6 python3.6-dev
 
 sudo apt-get install exfat-fuse exfat-utils
 
@@ -102,6 +105,13 @@ sudo apt-get install default-jre
 
 sudo apt install vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+curl -sL https://raw.githubusercontent.com/egalpin/apt-vim/master/install.sh | sh
+
+cd
+git clone git://github.com/joelthelion/autojump.git
+cd autojump ./install.py
+
+
 #sudo apt install i3
 #sudo apt install i3blocks
 #rm ~/.config/i3/config && ln -s ~/fresh_install/dotfiles/i3_config ~/.config/i3/config
@@ -112,12 +122,10 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #sudo make
 #sudo make install
 
-alias jpnb="jupyter notebook"
 
 mkdir ~/.git_files
 sudo cp ~/fresh_install/dotfiles/git-prompt.sh ~/.git_files/
 sudo cp ~/fresh_install/dotfiles/diff-so-fancy ~/.git_files/
-
 chmod +x ~/.git_files/diff-so-fancy
 
 git config --global core.pager "~/.git_files/diff-so-fancy | less --tabs=4 -RFX"
@@ -135,6 +143,7 @@ git config --global color.diff.old        "red bold"
 git config --global color.diff.new        "green bold"
 git config --global color.diff.whitespace "red reverse"
 
+echo 'alias jpnb="jupyter notebook"' >> ~/.bashrc
 
 echo 'export CUDA_HOME=/usr/local/cuda' >> ~/.bashrc
 
@@ -143,4 +152,3 @@ echo 'export GIT_PS1_SHOWDIRTYSTATE=1' >> ~/.bashrc
 echo 'export GIT_PS1_SHOWCOLORHINTS=true' >> ~/.bashrc
 echo 'export PROMPT_COMMAND='__git_ps1 "\w" "\\\$ " " (%9s)"'' >> ~/.bashrc
 echo ' . ~/.git_files/git-prompt.sh' >> ~/.bashrc
-
