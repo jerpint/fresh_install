@@ -13,7 +13,7 @@ Plugin 'git://github.com/airblade/vim-gitgutter.git'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'https://github.com/tpope/vim-fugitive.git'
+Plugin 'https://github.com/tpope/vim-fugitive.git' 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -32,10 +32,27 @@ Plugin 'https://github.com/scrooloose/nerdtree.git'
 Plugin 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
 Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'https://github.com/joshdick/onedark.vim.git'
+Plugin 'https://github.com/terryma/vim-multiple-cursors'
+Plugin 'https://github.com/Valloric/YouCompleteMe'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'Yggdroot/indentLine'
 
-map <C-n> :NERDTreeToggle<CR>
+"indentLine
+let g:indentLine_char = '▏'
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"python with virtualenv support for YouCompleteMe
+"Source https://realpython.com/vim-and-python-a-match-made-in-heaven/
+
+map <C-p> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "*",
@@ -51,6 +68,50 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 " enable syntax highlighting
 
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+"Use Return and Delete keys in normal mode like in insert mode
+
+function! Delete_key(...)
+  let line=getline (".")
+  if line=~'^\s*$'
+    execute "normal dd"
+    return
+  endif
+  let column = col(".")
+  let line_len = strlen (line)
+  let first_or_end=0
+  if column == 1
+    let first_or_end=1
+  else
+    if column == line_len
+      let first_or_end=1
+    endif
+  endif
+  execute "normal i\<DEL>\<Esc>"
+  if first_or_end == 0
+    execute "normal l"
+  endif
+endfunction
+nnoremap <silent> <DEL> :call Delete_key()<CR>
+nnoremap <silent> <CR> i<CR><Esc>
 
 
 filetype off                  " required
@@ -82,9 +143,8 @@ set showmatch
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
+syntax on
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -100,6 +160,17 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 set t_Co=256
-colorscheme onedark
-execute pathogen#infect()
-call pathogen#helptags()
+colorscheme onedark 
+
+autocmd vimenter * NERDTree
+
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
