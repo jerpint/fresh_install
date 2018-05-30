@@ -141,10 +141,10 @@ let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
 "split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" map <C-J> <C-W><C-J>
+" map <C-K> <C-W><C-K>
+" map <C-L> <C-W><C-L>
+" map <C-H> <C-W><C-H>
 
 filetype off                  " required
 
