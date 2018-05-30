@@ -45,10 +45,20 @@ Plugin 'https://github.com/python-mode/python-mode'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'https://github.com/scrooloose/nerdcommenter'
 
+" Change cursor to blinking in insert mode
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" optional reset cursor on start:
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END
 
 " NerdCommenter:
 " Toggle comment
-nnoremap <C-/> [count]<leader>c<space>
+map <C-_> <leader>c<space>
+
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
