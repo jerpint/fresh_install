@@ -40,6 +40,10 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'Yggdroot/indentLine'
 Plugin 'https://github.com/simnalamburt/vim-mundo'
 Plugin 'git://github.com/wikitopian/hardmode.git'
+Plugin 'christoomey/vim-tmux-navigator'
+
+" Place cursor with mouse ndkey -v
+set mouse=a
 
 " Copy to system register:
 vnoremap <C-c> "+y
