@@ -23,12 +23,12 @@ sudo apt update; sudo apt install atom
 sudo apt install geomview
 
 # configure git
-ssh-keygen -t rsa -C "jeremy@focus21.io" -b 4096
+ssh-keygen -t rsa -C "jerpint@gmail.com" -b 4096
 
 # add new ssh key:
 # cat ~/.ssh/id_rsa.pub
 git config --global user.name "Jeremy Pinto"
-git config --global user.email "jeremy@focus21.io"
+git config --global user.email "jerpint@gmail.com"
 git config --global push.default simple
 
 # sudo apt install python-pip
@@ -80,7 +80,7 @@ sudo apt-get install -y nodejs
 sudo npm install npm -g
 sudo apt install yarn
 
-sudo apt install terminator
+sudo apt install tmux
 
 sudo apt install postgresql-client-common
 sudo apt-get install postgresql postgresql-contrib
@@ -103,7 +103,7 @@ sudo apt-get install exfat-fuse exfat-utils
 
 sudo apt-get install default-jre
 
-sudo apt install vim
+sudo apt install vim-gtk
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 curl -sL https://raw.githubusercontent.com/egalpin/apt-vim/master/install.sh | sh
 
@@ -123,8 +123,9 @@ cd autojump ./install.py
 #sudo make install
 
 
+
 mkdir ~/.git_files
-sudo cp ~/fresh_install/dotfiles/git-prompt.sh ~/.git_files/
+# sudo cp ~/fresh_install/dotfiles/git-prompt.sh ~/.git_files/
 sudo cp ~/fresh_install/dotfiles/diff-so-fancy ~/.git_files/
 chmod +x ~/.git_files/diff-so-fancy
 
@@ -143,12 +144,12 @@ git config --global color.diff.old        "red bold"
 git config --global color.diff.new        "green bold"
 git config --global color.diff.whitespace "red reverse"
 
-echo 'alias jpnb="jupyter notebook"' >> ~/.bashrc
+# echo 'alias jpnb="jupyter notebook"' >> ~/.bashrc
 
-echo 'export CUDA_HOME=/usr/local/cuda' >> ~/.bashrc
+# echo 'export CUDA_HOME=/usr/local/cuda' >> ~/.bashrc
 
 # Git prompt (add branch name to terminal display)                                                 
-echo 'export GIT_PS1_SHOWDIRTYSTATE=1' >> ~/.bashrc
-echo 'export GIT_PS1_SHOWCOLORHINTS=true' >> ~/.bashrc
-echo 'export PROMPT_COMMAND='__git_ps1 "\w" "\\\$ " " (%9s)"'' >> ~/.bashrc
-echo ' . ~/.git_files/git-prompt.sh' >> ~/.bashrc
+# echo 'export GIT_PS1_SHOWDIRTYSTATE=1' >> ~/.bashrc
+# echo 'export GIT_PS1_SHOWCOLORHINTS=true' >> ~/.bashrc
+# echo 'export PROMPT_COMMAND='__git_ps1 "\w" "\\\$ " " (%9s)"'' >> ~/.bashrc
+# echo ' . ~/.git_files/git-prompt.sh' >> ~/.bashrc
