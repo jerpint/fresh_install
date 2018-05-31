@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/jeremy/.oh-my-zsh
+export ZSH=/home/jeremy/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -60,6 +60,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -98,7 +99,7 @@ bindkey -v
 
 # Autojump
 # . /usr/share/autojump/autojump.sh
-
+# export VIRTUAL_ENV_DISABLE_PROMPT=0
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
 export CUDA_HOME=/usr/local/cuda
 alias jpnb="jupyter notebook"
