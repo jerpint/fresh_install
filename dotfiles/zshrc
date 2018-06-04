@@ -98,6 +98,9 @@ bindkey '^R' history-incremental-search-backward
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Set capslock to esc key
+setxkbmap -option caps:escape
+
 # Autojump
 # . /usr/share/autojump/autojump.sh
 # export VIRTUAL_ENV_DISABLE_PROMPT=0
