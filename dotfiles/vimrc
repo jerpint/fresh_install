@@ -46,14 +46,14 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'https://github.com/scrooloose/nerdcommenter'
 
 " Change cursor to blinking in insert mode
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
+" let &t_SI = "\e[6 q"
+" let &t_EI = "\e[2 q"
 
 " optional reset cursor on start:
-augroup myCmds
-au!
-autocmd VimEnter * silent !echo -ne "\e[2 q"
-augroup END
+" augroup myCmds
+" au!
+" autocmd VimEnter * silent !echo -ne "\e[2 q"
+" augroup END
 
 " NerdCommenter:
 " Toggle comment
@@ -140,12 +140,20 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+"
 "split navigations
 " map <C-J> <C-W><C-J>
 " map <C-K> <C-W><C-K>
 " map <C-L> <C-W><C-L>
 " map <C-H> <C-W><C-H>
 
+" highlight words on search
+:set hlsearch
 filetype off                  " required
 
 syntax enable
