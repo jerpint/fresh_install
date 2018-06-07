@@ -44,8 +44,20 @@ Plugin 'https://github.com/python-mode/python-mode'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'https://github.com/scrooloose/nerdcommenter'
 
+
+nnoremap tn :tabnew<Space>
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+nnoremap th :tabfirst<CR>
+nnoremap tl :tablast<CR>
+
 let g:airline_theme = 'luna'
 " Syntastic:
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [],'passive_filetypes': [] }
 
