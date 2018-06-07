@@ -45,7 +45,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'https://github.com/scrooloose/nerdcommenter'
 
 
-nnoremap tn :tabnew<Space>
+map tn :tabnew<Space>
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
