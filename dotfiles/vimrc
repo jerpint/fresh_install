@@ -33,8 +33,10 @@ Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'https://github.com/joshdick/onedark.vim.git'
 " Plugin 'https://github.com/terryma/vim-multiple-cursors'
 " Plugin 'https://github.com/Valloric/YouCompleteMe'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'https://github.com/itchyny/lightline.vim'
+" Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'vim-syntastic/syntastic'
 Plugin 'Yggdroot/indentLine'
 Plugin 'https://github.com/simnalamburt/vim-mundo'
@@ -44,7 +46,7 @@ Plugin 'https://github.com/python-mode/python-mode'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'https://github.com/scrooloose/nerdcommenter'
 
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'https://github.com/jreybert/vimagit'
 
 
 map tn :tabnew<Space>
@@ -53,7 +55,11 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
-let g:airline_theme = 'luna'
+" let g:airline_theme = 'luna'
+let g:airline_theme='onedark'
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 " Syntastic:
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
