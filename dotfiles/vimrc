@@ -33,10 +33,10 @@ Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'https://github.com/joshdick/onedark.vim.git'
 " Plugin 'https://github.com/terryma/vim-multiple-cursors'
 " Plugin 'https://github.com/Valloric/YouCompleteMe'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
 Plugin 'https://github.com/itchyny/lightline.vim'
-" Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'vim-syntastic/syntastic'
 Plugin 'Yggdroot/indentLine'
 Plugin 'https://github.com/simnalamburt/vim-mundo'
@@ -45,28 +45,39 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'https://github.com/python-mode/python-mode'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'https://github.com/scrooloose/nerdcommenter'
-
+Plugin 'https://github.com/plytophogy/vim-virtualenv'
 Plugin 'https://github.com/jreybert/vimagit'
+Plugin 'https://github.com/vim-scripts/taglist.vim'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'kien/ctrlp.vim'
 
 
+" navigate tabs
 map tn :tabnew<Space>
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
-" let g:airline_theme = 'luna'
-let g:airline_theme='onedark'
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ }
 " Syntastic:
+" let g:airline_theme = 'luna'
+" let g:airline_theme='onedark'
+" let g:lightline = {
+"   \ 'colorscheme': 'onedark',
+"   \ }
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
-
+let g:airline_inactive_collapse=1
+" let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+let g:airline_section_b = '%-0.10{getcwd()}'
+let g:airline_section_c = '%t'
+let g:airline_powerline_fonts = 1
+let g:airline_ttimeoutlen = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" Syntastic:
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [],'passive_filetypes': [] }
 
 nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
@@ -115,19 +126,21 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-
+" let g:nerdtree_tabs_smart_startup_focus=1
+" map <C-[>n <plug>NERDTreeTabsToggle<CR>
+map <C-i> :NERDTreeToggle<CR>
 " PythonMode:
 let g:pymode_python = 'python3'
 let g:pymode_motion = 1
 let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_cmd = ''
-let g:pymode_breakpoint_bind = '<leader>b'
+let g:pymode_breakpoint_bind = '<C-b>'
 let g:pymode_lint = 0
 " Place0 cursor with mouse ndkey -v
 set mouse=a
 
 " Copy to system register:
-noremap <C-S-c> "+y
+noremap <C-c> "+y
 
 " Hardmode:
 " autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
@@ -148,9 +161,13 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "python with virtualenv support for YouCompleteMe
 "Source https://realpython.com/vim-and-python-a-match-made-in-heaven/
 
-map <C-p> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Start NERDTree
+autocmd VimEnter * NERDTree
+" Go to previous (last accessed) window.
+autocmd VimEnter * wincmd p
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 let g:NERDTreeIndicatorMapCustom = {
@@ -193,6 +210,8 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 " highlight words on search
 :set hlsearch
+" undo highlight
+nmap <C-n> :noh <CR>
 filetype off                  " required
 
 syntax enable
@@ -248,9 +267,6 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 set t_Co=256
 colorscheme onedark 
-
-autocmd vimenter * NERDTree
-
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
