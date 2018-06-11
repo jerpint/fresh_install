@@ -153,3 +153,19 @@ git config --global color.diff.whitespace "red reverse"
 # echo 'export GIT_PS1_SHOWCOLORHINTS=true' >> ~/.bashrc
 # echo 'export PROMPT_COMMAND='__git_ps1 "\w" "\\\$ " " (%9s)"'' >> ~/.bashrc
 # echo ' . ~/.git_files/git-prompt.sh' >> ~/.bashrc
+
+cd ~/Downloads
+# Download the latest version of the symbol font and fontconfig file:
+wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+
+mkdir -p ~/.local/share/fonts
+mv PowerlineSymbols.otf ~/.local/share/fonts/
+
+mkdir ~/.config/fontconfig/conf.d 
+mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+
+# Install powerlevel9k (oh-my-zsh)
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+
+sudo pip3 install powerline-status
