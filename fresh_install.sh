@@ -169,3 +169,9 @@ mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 sudo pip3 install powerline-status
+
+# Install nerd-fonts 
+# https://github.com/ryanoasis/nerd-fonts
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+
