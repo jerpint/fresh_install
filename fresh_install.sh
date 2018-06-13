@@ -103,6 +103,8 @@ sudo apt-get install exfat-fuse exfat-utils
 
 sudo apt-get install default-jre
 
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt-get update
 sudo apt install vim-gtk
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 curl -sL https://raw.githubusercontent.com/egalpin/apt-vim/master/install.sh | sh
