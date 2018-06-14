@@ -124,12 +124,16 @@ cd autojump ./install.py
 #sudo make
 #sudo make install
 
-
-
+# Get my repo for dotfiles
+git clone 'https://github.com/jerpint/fresh_install'
 mkdir ~/.git_files
 # sudo cp ~/fresh_install/dotfiles/git-prompt.sh ~/.git_files/
+# Add diff-so-fancy for nice looking diffs in terminal
 sudo cp ~/fresh_install/dotfiles/diff-so-fancy ~/.git_files/
 chmod +x ~/.git_files/diff-so-fancy
+
+# load keyboard shortcuts from Ubuntu
+dconf load / <~/fresh_install/config/dconf/user.conf
 
 git config --global core.pager "~/.git_files/diff-so-fancy | less --tabs=4 -RFX"
 git config --global color.ui true
