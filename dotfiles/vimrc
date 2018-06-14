@@ -55,6 +55,8 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'https://github.com/terryma/vim-smooth-scroll'
 Plugin 'https://github.com/w0rp/ale'
 
+"Highlight searches while typing
+set incsearch
 
 "Smooth Scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
