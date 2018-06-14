@@ -110,12 +110,17 @@ bindkey '^R' history-incremental-search-backward
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Set capslock to esc key
-setxkbmap -option caps:escape
 
 # Spawn terminal with tmux
 if [ "$TMUX" = "" ]; then tmux; fi
 
+# save keyboard layout and then load it
+dconf dump / >~/fresh_install/config/dconf/user.conf
+dconf load / <~/fresh_install/config/dconf/user.conf
+
+# Set capslock to esc key
+# setxkbmap -option caps:escape
+dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
 
 # Autojump
 # . /usr/share/autojump/autojump.sh
