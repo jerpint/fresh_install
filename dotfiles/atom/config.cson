@@ -1,0 +1,25 @@
+"*":
+  core:
+    autoHideMenuBar: true
+    disabledPackages: [
+      "terminal-plus"
+      "persistent-undo"
+    ]
+    packagesWithKeymapsDisabled: []
+    restorePreviousWindowsOnStart: "always"
+    telemetryConsent: "no"
+  editor:
+    fontSize: 17
+  "exception-reporting":
+    userId: "e4235546-280b-4e46-904f-37fdbbc36f94"
+  "relative-numbers": {}
+  "spell-check": {}
+  "vim-mode":
+    useClipboardAsDefaultRegister: true
+  "vim-mode-plus":
+    automaticallyEscapeInsertModeOnActivePaneItemChange: true
+    smoothScrollOnFullScrollMotion: true
+    smoothScrollOnHalfScrollMotion: true
+    smoothScrollOnHalfScrollMotionDuration: 250
+  welcome:
+    showOnStartup: false
