@@ -113,6 +113,10 @@ bindkey '^R' history-incremental-search-backward
 # Set capslock to esc key
 setxkbmap -option caps:escape
 
+# Spawn terminal with tmux
+if [ "$TMUX" = "" ]; then tmux; fi
+
+
 # Autojump
 # . /usr/share/autojump/autojump.sh
 # export VIRTUAL_ENV_DISABLE_PROMPT=0
@@ -124,3 +128,4 @@ alias treee="tree -La 1"
 alias cl="clear"
 alias gs="git status"
 alias v="vim"
+alias at="atom ."
