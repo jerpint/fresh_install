@@ -31,7 +31,7 @@ Plugin 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
 Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'https://github.com/joshdick/onedark.vim.git'
 " Plugin 'https://github.com/terryma/vim-multiple-cursors'
-" Plugin 'https://github.com/Valloric/YouCompleteMe'
+Plugin 'https://github.com/Valloric/YouCompleteMe'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 Plugin 'https://github.com/itchyny/lightline.vim'
@@ -54,9 +54,17 @@ Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'https://github.com/terryma/vim-smooth-scroll'
 Plugin 'https://github.com/w0rp/ale'
+Plugin 'https://github.com/tommcdo/vim-exchange/'
+Plugin 'https://github.com/pacha/vem-tabline/'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'mgee/lightline-bufferline'
+Plugin 'https://github.com/dhruvasagar/vim-vinegar'
 
 "Highlight searches while typing
 set incsearch
+
+"default to case insensitive search
+set ic
 
 "Smooth Scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -87,6 +95,15 @@ let g:airline_powerline_fonts = 1
 let g:airline_ttimeoutlen = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#enabled = 1
+
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ }
+
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 " Syntastic:
 " let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [],'passive_filetypes': [] }
@@ -163,11 +180,14 @@ set undodir=~/.vim/undo
 nnoremap <F5> :MundoToggle<CR>
 
 "indentLine
-let g:indentLine_char = '▏'
+let g:indentLine_enabled = 0
+" let g:indentLine_char = '▏'
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_min_num_of_chars_for_completion = 99
+
 
 "python with virtualenv support for YouCompleteMe
 "Source https://realpython.com/vim-and-python-a-match-made-in-heaven/
@@ -180,7 +200,9 @@ autocmd VimEnter * NERDTree
 " Go to previous (last accessed) window.
 autocmd VimEnter * wincmd p
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-
+" let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "*",
     \ "Staged"    : "+",
@@ -258,6 +280,8 @@ set updatetime=100
 " show the matching part of the pair for [] {} and ()
 set showmatch
 
+set backspace=indent,eol,start
+
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 syntax on
@@ -277,7 +301,8 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 set t_Co=256
-colorscheme onedark 
+" colorscheme onedark
+colorscheme nord 
 set encoding=UTF-8
 
 au BufNewFile,BufRead *.py
