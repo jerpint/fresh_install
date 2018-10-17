@@ -59,6 +59,7 @@ Plugin 'https://github.com/pacha/vem-tabline/'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'mgee/lightline-bufferline'
 Plugin 'https://github.com/dhruvasagar/vim-vinegar'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 "Highlight searches while typing
 set incsearch
@@ -188,6 +189,8 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_min_num_of_chars_for_completion = 99
 
+" VimMarkdownPreview
+let vim_markdown_preview_github=1
 
 "python with virtualenv support for YouCompleteMe
 "Source https://realpython.com/vim-and-python-a-match-made-in-heaven/
