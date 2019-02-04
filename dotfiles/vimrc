@@ -47,7 +47,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'https://github.com/scrooloose/nerdcommenter'
 Plugin 'https://github.com/plytophogy/vim-virtualenv'
 Plugin 'https://github.com/jreybert/vimagit'
-Plugin 'https://github.com/vim-scripts/taglist.vim'
+" Plugin 'https://github.com/vim-scripts/taglist.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
@@ -60,12 +60,23 @@ Plugin 'arcticicestudio/nord-vim'
 Plugin 'mgee/lightline-bufferline'
 Plugin 'https://github.com/dhruvasagar/vim-vinegar'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'https://github.com/brooth/far.vim'
+" Plugin 'szymonmaszke/vimpyter' "Vundle
+Plugin 'https://github.com/jlanzarotta/bufexplorer'
+Plugin 'https://github.com/mhinz/vim-startify'
+Plugin 'https://github.com/wincent/terminus'
+" Plugin 'https://github.com/tmhedberg/SimpylFold'
+Plugin 'larsbs/vimterial_dark'
+
 
 "Highlight searches while typing
 set incsearch
 
 "default to case insensitive search
 set ic
+
+"Macro for debugging in ipython
+let @i = 'oFCfrom IPython import embed; embed(); raise ValueError()FD'
 
 "Smooth Scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -156,8 +167,9 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 
 " let g:nerdtree_tabs_smart_startup_focus=1
-" map <C-[>n <plug>NERDTreeTabsToggle<CR>
-map <C-i> :NERDTreeToggle<CR>
+map <C-[>n <plug>NERDTreeTabsToggle<CR>
+map <tab> :NERDTreeToggle<CR>
+
 " PythonMode:
 let g:pymode_python = 'python3'
 let g:pymode_motion = 1
@@ -169,7 +181,8 @@ let g:pymode_lint = 0
 set mouse=a
 
 " Copy to system register:
-noremap <C-c> "+y
+set clipboard=unnamedplus
+" noremap <C-c> "+y
 
 " Hardmode:
 " autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
@@ -252,7 +265,8 @@ filetype off                  " required
 
 syntax enable
 
-
+" Split to the right when opening a new window
+set splitright
 " show relative line numbers
 set number relativenumber
 
@@ -305,7 +319,9 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 set t_Co=256
 " colorscheme onedark
-colorscheme nord 
+colorscheme nord
+" colorscheme vimterial_dark
+
 set encoding=UTF-8
 
 au BufNewFile,BufRead *.py
