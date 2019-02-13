@@ -67,6 +67,7 @@ Plugin 'https://github.com/mhinz/vim-startify'
 Plugin 'https://github.com/wincent/terminus'
 " Plugin 'https://github.com/tmhedberg/SimpylFold'
 Plugin 'larsbs/vimterial_dark'
+Plugin 'https://github.com/vim-scripts/ZoomWin'
 
 
 "Highlight searches while typing
@@ -76,8 +77,7 @@ set incsearch
 set ic
 
 "Macro for debugging in ipython
-let @i = 'oFCfrom IPython import embed; embed(); raise ValueError()FD'
-
+let @o = "o€FCfrom IPython import embed; embed(); raise ValueError()€FD"
 "Smooth Scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
