@@ -89,6 +89,11 @@ bindkey -v
 # User configuration
 bindkey '^R' history-incremental-search-backward
 
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -120,10 +125,6 @@ bindkey '^R' history-incremental-search-backward
 # Spawn terminal with tmux
 if [ "$TMUX" = "" ]; then tmux; fi
 
-# save keyboard layout and then load it
-dconf dump / >~/fresh_install/config/dconf/user.conf
-dconf load / <~/fresh_install/config/dconf/user.conf
-
 # Set capslock to esc key
 # setxkbmap -option caps:escape
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
@@ -142,6 +143,7 @@ alias at="atom ."
 alias gdiff="git diff"
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
+alias penv="pipenv shell"
 
 # Install Ruby Gems to ~/gems
 export GEM_HOME=$HOME/gems
@@ -160,3 +162,7 @@ prompt_context() {
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
   fi
 }
+
+# Go path
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=${HOME}/go
