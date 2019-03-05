@@ -290,3 +290,40 @@ unbind %
 set-window-option -g mode-keys vi
 
 set -g history-file ~/.tmux_history
+
+
+# Switch between local and remote tmux
+unbind C-b
+set -g prefix C-a
+
+set -g status-bg colour159 # colour0
+setw -g window-status-current-bg colour159 # COLOUR0
+
+bind -n C-t new-window -a
+bind -n S-left  prev
+bind -n S-right next
+bind -n S-C-left  swap-window -t -1
+bind -n S-C-right swap-window -t +1
+
+bind -n M-F11 set -qg status-bg colour159 # colour0
+bind -n M-F12 set -qg status-bg '#000000' 
+bind -n S-up \
+	send-keys M-F12 \; \
+	set -qg status-bg colour159 \; \
+	unbind -n S-left \; \
+	unbind -n S-right \; \
+	unbind -n S-C-left \; \
+	unbind -n S-C-right \; \
+	unbind -n C-t \; \
+    unbind -n C-a \; \
+	set -qg prefix C-b
+bind -n S-down \
+	send-keys M-F11 \; \
+	set -qg status-bg '#000000' # COLOUR0 \; \
+	bind -n S-left  prev \; \
+	bind -n S-right next \; \
+	bind -n S-C-left swap-window -t -1 \; \
+	bind -n S-C-right swap-window -t +1 \; \
+	bind -n C-t new-window -a -c "#{pane_current_path}" \; \
+	set -qg prefix C-a
+
