@@ -28,7 +28,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'git://github.com/tpope/vim-surround.git'
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 Plugin 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
-Plugin 'severin-lemaignan/vim-minimap'
+" Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'https://github.com/joshdick/onedark.vim.git'
 " Plugin 'https://github.com/terryma/vim-multiple-cursors'
 Plugin 'https://github.com/Valloric/YouCompleteMe'
@@ -61,13 +61,12 @@ Plugin 'mgee/lightline-bufferline'
 Plugin 'https://github.com/dhruvasagar/vim-vinegar'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'https://github.com/brooth/far.vim'
-" Plugin 'szymonmaszke/vimpyter' "Vundle
 Plugin 'https://github.com/jlanzarotta/bufexplorer'
 Plugin 'https://github.com/mhinz/vim-startify'
 Plugin 'https://github.com/wincent/terminus'
-" Plugin 'https://github.com/tmhedberg/SimpylFold'
 Plugin 'larsbs/vimterial_dark'
 Plugin 'https://github.com/vim-scripts/ZoomWin'
+Plugin 'https://github.com/jeetsukumaran/vim-pythonsense'
 
 
 "Highlight searches while typing
