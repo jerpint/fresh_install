@@ -134,16 +134,11 @@ dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
 # export VIRTUAL_ENV_DISABLE_PROMPT=0
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
 export CUDA_HOME=/usr/local/cuda
-alias jpnb="jupyter notebook"
-alias sros="source ~/catkin_ws/devel/setup.zsh"
-alias tre="tree -La 1"
-alias cl="clear"
-alias gs="git status"
-alias at="atom ."
-alias gdiff="git diff"
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias penv="pipenv shell"
+
+# Source aliases
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
 
 # Install Ruby Gems to ~/gems
 export GEM_HOME=$HOME/gems
