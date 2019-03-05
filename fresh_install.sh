@@ -4,10 +4,10 @@ sudo apt update
 sudo apt upgrade
 
 # download chrome
-sudo apt-get install libxss1 libappindicator1 libindicator7
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome*.deb
-sudo apt-get install -f
+# sudo apt-get install libxss1 libappindicator1 libindicator7
+# wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+# sudo dpkg -i google-chrome*.deb
+# sudo apt-get install -f
 
 # Download google play music+install
 
@@ -82,22 +82,20 @@ sudo apt install yarn
 
 sudo apt install tmux
 
-sudo apt install postgresql-client-common
-sudo apt-get install postgresql postgresql-contrib
-sudo apt-get install postgresql-client
+# sudo apt install postgresql-client-common
+# sudo apt-get install postgresql postgresql-contrib
+# sudo apt-get install postgresql-client
 
-sudo apt install python3-pip
+# sudo apt install python3-pip
 
-sudo pip3 install virtualenv
-sudo pip3 install pew
-sudo pip3 install pipenv
-sudo pip3 install jupyter
-sudo pip3 install jupyter_contrib_nbextensions
-jupyter contrib nbextension install --user
+# sudo pip3 install virtualenv
+# sudo pip3 install pew
+# sudo pip3 install pipenv
+# sudo pip3 install jupyter
+# sudo pip3 install jupyter_contrib_nbextensions
+# jupyter contrib nbextension install --user
 
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt-get update
-sudo apt-get install python3.6 python3.6-dev
+sudo pip install --user flake8
 
 sudo apt-get install exfat-fuse exfat-utils
 
@@ -133,7 +131,7 @@ sudo cp ~/fresh_install/dotfiles/diff-so-fancy ~/.git_files/
 chmod +x ~/.git_files/diff-so-fancy
 
 # load keyboard shortcuts from Ubuntu
-dconf load / <~/fresh_install/config/dconf/user.conf
+# dconf load / <~/fresh_install/config/dconf/user.conf
 
 git config --global core.pager "~/.git_files/diff-so-fancy | less --tabs=4 -RFX"
 git config --global color.ui true
@@ -150,9 +148,7 @@ git config --global color.diff.old        "red bold"
 git config --global color.diff.new        "green bold"
 git config --global color.diff.whitespace "red reverse"
 
-# echo 'alias jpnb="jupyter notebook"' >> ~/.bashrc
 
-# echo 'export CUDA_HOME=/usr/local/cuda' >> ~/.bashrc
 
 # Git prompt (add branch name to terminal display)                                                 
 # echo 'export GIT_PS1_SHOWDIRTYSTATE=1' >> ~/.bashrc
@@ -188,4 +184,10 @@ sudo apt-get install compizconfig-settings-manager compiz-plugins-extra
 git clone https://github.com/arcticicestudio/nord-gnome-terminal.git
 cd nord-gnome-terminal/src
 ./nord.sh
+
+# Install xsel (tmux clipboard dependency)
+sudo apt install xsel
+
+pip install --upgrade pip
+pip install --user pipenv
 
