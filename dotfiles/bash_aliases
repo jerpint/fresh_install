@@ -1,4 +1,6 @@
 # Local aliases
+alias android-studio="cd /usr/local/android-studio/bin && ./studio.sh"
+alias sshp-mila="sshpass -f ~/.mila_login_pass.pass ssh mila"
 
 # Useful aliases
 alias count="ls -1 | wc -l" # Count files in a dir
@@ -10,7 +12,7 @@ alias at="atom ."
 alias gd="git diff"
 alias zshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
-alias bashrc="vvim ~/.bashrc"
+alias bashrc="vim ~/.bashrc"
 alias sbashrc="source ~/.bashrc"
 alias vimrc="vim ~/.vimrc"
 alias svimrc="source ~/.vimrc"
