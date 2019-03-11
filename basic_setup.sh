@@ -22,3 +22,6 @@ cd && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 tmux source ~/.tmux.conf
+
+# source ~/.bashrc when done
+source ~/.bashrc
