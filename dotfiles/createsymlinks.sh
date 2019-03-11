@@ -8,7 +8,7 @@
 
 dir=~/fresh_install/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-declare -a files=("vimrc" "zshrc" "tmux.conf" "tmux.conf.local")    # list of files/folders to symlink in homedir
+declare -a files=("vimrc" "zshrc" "tmux.conf" "tmux.conf.local" "bash_aliases")    # list of files/folders to symlink in homedir
 
 ##########
 
