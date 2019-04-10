@@ -1,6 +1,10 @@
 # Local aliases
 alias android-studio="cd /usr/local/android-studio/bin && ./studio.sh"
-alias sshp-mila="sshpass -f ~/.mila_login_pass.pass ssh mila"
+alias vim="nvim"
+alias v="nvim"
+alias ls="lsd"
+alias cwp="~/wallpapers/script.sh"
+alias xo="xdg-open"
 
 # Useful aliases
 alias count="ls -1 | wc -l" # Count files in a dir
@@ -57,7 +61,9 @@ alias gbsb='git bisect bad'
 alias gbsg='git bisect good'
 alias gbsr='git bisect reset'
 alias gbss='git bisect start'
-alias gc='git commit -v'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gcv='git commit -v'
 alias 'gc!'='git commit -v --amend'
 alias gca='git commit -v -a'
 alias 'gca!'='git commit -v -a --amend'
@@ -67,9 +73,10 @@ alias 'gcans!'='git commit -v -a -s --no-edit --amend'
 alias gcb='git checkout -b'
 alias gcd='git checkout develop'
 alias gcf='git config --list'
+alias gch='git checkout'
 alias gcl='git clone --recurse-submodules'
 alias gclean='git clean -fd'
-alias gcm='git checkout master'
+# alias gcm='git checkout master'
 alias gcmsg='git commit -m'
 alias 'gcn!'='git commit -v --no-edit --amend'
 alias gco='git checkout'
@@ -181,10 +188,10 @@ alias gupav='git pull --rebase --autostash -v'
 alias gupv='git pull --rebase -v'
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
-alias l='ls -lah'
-alias la='ls -lAh'
+alias l='ls'
+alias la='ls -lah'
 alias ll='ls -lh'
-alias ls='ls --color=tty'
+# alias ls='ls --color=tty'
 alias lsa='ls -lah'
 alias md='mkdir -p'
 alias please='sudo'
