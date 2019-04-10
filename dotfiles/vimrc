@@ -10,12 +10,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'git://github.com/airblade/vim-gitgutter.git'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'https://github.com/tpope/vim-fugitive.git' 
+Plugin 'https://github.com/tpope/vim-fugitive.git'
 " plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
+Plugin 'L9'
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -25,48 +22,57 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 Plugin 'flazz/vim-colorschemes'
-Plugin 'git://github.com/tpope/vim-surround.git'
-Plugin 'https://github.com/scrooloose/nerdtree.git'
-Plugin 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
-" Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'https://github.com/joshdick/onedark.vim.git'
-" Plugin 'https://github.com/terryma/vim-multiple-cursors'
-Plugin 'https://github.com/Valloric/YouCompleteMe'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
-Plugin 'https://github.com/itchyny/lightline.vim'
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-" Plugin 'https://github.com/nvie/vim-flake8'
-" Plugin 'vim-syntastic/syntastic'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'larsbs/vimterial_dark'
+Plugin 'https://github.com/benburrill/potato-colors'
 Plugin 'Yggdroot/indentLine'
+Plugin 'https://github.com/itchyny/lightline.vim'
+Plugin 'https://github.com/pacha/vem-tabline/'
+Plugin 'mgee/lightline-bufferline'
+
+Plugin 'git://github.com/tpope/vim-surround.git'
+
+" NERDTree
+Plugin 'https://github.com/scrooloose/nerdtree.git'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'https://github.com/tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
+"
+"
 Plugin 'https://github.com/simnalamburt/vim-mundo'
-Plugin 'git://github.com/wikitopian/hardmode.git'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'https://github.com/python-mode/python-mode'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'https://github.com/scrooloose/nerdcommenter'
 Plugin 'https://github.com/plytophogy/vim-virtualenv'
 Plugin 'https://github.com/jreybert/vimagit'
 " Plugin 'https://github.com/vim-scripts/taglist.vim'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
-Plugin 'ryanoasis/vim-devicons'
 Plugin 'https://github.com/terryma/vim-smooth-scroll'
 Plugin 'https://github.com/w0rp/ale'
 Plugin 'https://github.com/tommcdo/vim-exchange/'
-Plugin 'https://github.com/pacha/vem-tabline/'
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'mgee/lightline-bufferline'
 Plugin 'https://github.com/dhruvasagar/vim-vinegar'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'https://github.com/brooth/far.vim'
 Plugin 'https://github.com/jlanzarotta/bufexplorer'
 Plugin 'https://github.com/mhinz/vim-startify'
 Plugin 'https://github.com/wincent/terminus'
-Plugin 'larsbs/vimterial_dark'
 Plugin 'https://github.com/vim-scripts/ZoomWin'
+
+" Transparent backgrounds
+Plugin 'https://github.com/miyakogi/seiya.vim'
+
+
+" Multi cursors
+Plugin 'https://github.com/mg979/vim-visual-multi'
+
+"Python Plugins
+Plugin 'https://github.com/Valloric/YouCompleteMe'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'vim-scripts/indentpython.vim'
 Plugin 'https://github.com/jeetsukumaran/vim-pythonsense'
+Plugin 'deoplete-plugins/deoplete-jedi'
+Plugin 'ntk148v/vim-horizon'
 
 
 "Highlight searches while typing
@@ -75,8 +81,16 @@ set incsearch
 "default to case insensitive search
 set ic
 
+" Jedi-vim setup
+let g:jedi#popup_on_dot = 0
+let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#completions_enabled = 1
+let g:jedi#smart_auto_mappings = 0
+
 "Macro for debugging in ipython
-let @o = "oÄFCfrom IPython import embed; embed(); raise ValueError()ÄFD"
+" let @o = "oÄFCfrom IPython import embed; embed(); raise ValueError()ÄFD"
+let @o = 'ofrom IPython import embed; embed(); raise ValueError()0w'
+
 "Smooth Scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
@@ -90,24 +104,7 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
-" Syntastic:
-" let g:airline_theme = 'luna'
-" let g:airline_theme='onedark'
-" let g:lightline = {
-"   \ 'colorscheme': 'onedark',
-"   \ }
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_inactive_collapse=1
-" let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
-let g:airline_section_b = '%-0.10{getcwd()}'
-let g:airline_section_c = '%t'
-let g:airline_powerline_fonts = 1
-let g:airline_ttimeoutlen = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#enabled = 1
-
+" Set lightline theme
 let g:lightline = {
       \ 'colorscheme': 'nord',
       \ }
@@ -116,29 +113,6 @@ let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
 
-" Syntastic:
-" let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [],'passive_filetypes': [] }
-"
-" nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
-"
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-"
-" let g:syntastic_always_populate_loc_list = 0
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
-" Change cursor to blinking in insert mode
-" let &t_SI = "\e[6 q"
-" let &t_EI = "\e[2 q"
-
-" optional reset cursor on start:
-" augroup myCmds
-" au!
-" autocmd VimEnter * silent !echo -ne "\e[2 q"
-" augroup END
 
 " NerdCommenter:
 " Toggle comment
@@ -167,25 +141,14 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " let g:nerdtree_tabs_smart_startup_focus=1
 map <C-[>n <plug>NERDTreeTabsToggle<CR>
-map <tab> :NERDTreeToggle<CR>
+map <space> :NERDTreeToggle<CR>
 
-" PythonMode:
-let g:pymode_python = 'python3'
-let g:pymode_motion = 1
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_cmd = ''
-let g:pymode_breakpoint_bind = '<C-b>'
-let g:pymode_lint = 0
 " Place0 cursor with mouse ndkey -v
 set mouse=a
 
 " Copy to system register:
 set clipboard=unnamedplus
-" noremap <C-c> "+y
 
-" Hardmode:
-" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 " Mundo: Enable persistent undo so that undo history persists across vim sessions
 set undofile
@@ -194,7 +157,6 @@ nnoremap <F5> :MundoToggle<CR>
 
 "indentLine
 let g:indentLine_enabled = 0
-" let g:indentLine_char = '‚ñè'
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -203,21 +165,21 @@ let g:ycm_min_num_of_chars_for_completion = 99
 
 " VimMarkdownPreview
 let vim_markdown_preview_github=1
+let vim_markdown_preview_hotkey='<C-m>'
+
 
 "python with virtualenv support for YouCompleteMe
 "Source https://realpython.com/vim-and-python-a-match-made-in-heaven/
-
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Start NERDTree
 autocmd VimEnter * NERDTree
 " Go to previous (last accessed) window.
 autocmd VimEnter * wincmd p
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-" let g:NERDTreeDirArrowExpandable = '‚ñ∏'
-let g:NERDTreeDirArrowExpandable = '‚ñ∏'
-let g:NERDTreeDirArrowCollapsible = '-'
+let g:NERDTreeDirArrowExpandable = "\u00a0"
+let g:NERDTreeDirArrowCollapsible = "\u00a0"
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
+let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "*",
     \ "Staged"    : "+",
@@ -230,19 +192,6 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '‚òí',
     \ "Unknown"   : "?"
     \ }
-" enable syntax highlighting
-
-let g:multi_cursor_use_default_mapping=0
-
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<A-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<A-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
 
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
@@ -262,6 +211,7 @@ nmap <silent> <c-l> :wincmd l<CR>
 nmap <C-n> :noh <CR>
 filetype off                  " required
 
+" enable syntax highlighting
 syntax enable
 
 " Split to the right when opening a new window
@@ -317,12 +267,37 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 set t_Co=256
+augroup nord-overrides
+  autocmd!
+  autocmd ColorScheme nord highlight Comment ctermfg=8
+  autocmd ColorScheme nord highlight Visual ctermbg=8 "set color 8 in term to #788398
+augroup END
+
 " colorscheme onedark
+
 colorscheme nord
 " colorscheme vimterial_dark
+" colorscheme molokai
+" colorscheme blackboard
+" colorscheme potato
+" colorscheme horizon
+" hi Normal ctermbg=none
+" hi NonText ctermbg=none
+" hi LineNr ctermbg=none
+" hi ALEErrorLine ctermbg=none
+" let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
+
+
+" Autoremove trailing whitespace
+autocmd BufWritePre * %s/\s\+$//e
 
 set encoding=UTF-8
 
+" For .txt files and markdown files, enable spell checking
+au BufReadPost,BufNewFile *.md,*.txt,*.tex
+    \ set spell spelllang=en_ca
+
+" .py specific settings
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -331,4 +306,3 @@ au BufNewFile,BufRead *.py
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
-
