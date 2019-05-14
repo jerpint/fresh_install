@@ -1,5 +1,6 @@
 # Local aliases
 alias android-studio="cd /usr/local/android-studio/bin && ./studio.sh"
+alias sshp-mila="sshpass -f ~/.mila_login_pass.pass ssh mila"
 alias vim="nvim"
 alias v="nvim"
 alias ls="lsd"
@@ -46,7 +47,7 @@ alias ga='git add'
 alias gaa='git add --all'
 alias gap='git apply'
 alias gapa='git add --patch'
-alias gau='git add --update'
+alias gau='git add -u'
 alias gav='git add --verbose'
 alias gb='git branch'
 alias gbD='git branch -D'
