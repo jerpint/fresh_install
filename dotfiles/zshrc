@@ -161,3 +161,5 @@ prompt_context() {
 # Go path
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=${HOME}/go
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
