@@ -6,6 +6,9 @@ alias v="nvim"
 alias ls="lsd"
 alias cwp="~/wallpapers/script.sh"
 alias xo="xdg-open"
+alias condact="conda activate"
+alias condex="conda deactivate"
+alias ipy="ipython"
 
 # Useful aliases
 alias count="ls -1 | wc -l" # Count files in a dir
@@ -71,7 +74,7 @@ alias 'gca!'='git commit -v -a --amend'
 alias gcam='git commit -a -m'
 alias 'gcan!'='git commit -v -a --no-edit --amend'
 alias 'gcans!'='git commit -v -a -s --no-edit --amend'
-alias gcb='git checkout -b'
+alias gchb='git checkout -b'
 alias gcd='git checkout develop'
 alias gcf='git config --list'
 alias gch='git checkout'
