@@ -25,6 +25,8 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'https://github.com/joshdick/onedark.vim.git'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'larsbs/vimterial_dark'
+Plugin 'https://github.com/NLKNguyen/papercolor-theme'
+Plugin 'https://github.com/therubymug/vim-pyte'
 Plugin 'https://github.com/benburrill/potato-colors'
 Plugin 'Yggdroot/indentLine'
 Plugin 'https://github.com/itchyny/lightline.vim'
@@ -59,12 +61,15 @@ Plugin 'https://github.com/mhinz/vim-startify'
 Plugin 'https://github.com/wincent/terminus'
 Plugin 'https://github.com/vim-scripts/ZoomWin'
 
+" Transpose text matrices
+Plugin 'https://github.com/salsifis/vim-transpose'
+
 " Transparent backgrounds
-Plugin 'https://github.com/miyakogi/seiya.vim'
+" Plugin 'https://github.com/miyakogi/seiya.vim'
 
 
 " Multi cursors
-Plugin 'https://github.com/mg979/vim-visual-multi'
+" Plugin 'https://github.com/mg979/vim-visual-multi'
 
 "Python Plugins
 Plugin 'https://github.com/Valloric/YouCompleteMe'
@@ -74,6 +79,8 @@ Plugin 'https://github.com/jeetsukumaran/vim-pythonsense'
 Plugin 'deoplete-plugins/deoplete-jedi'
 Plugin 'ntk148v/vim-horizon'
 
+"Jupyter notebooks
+" Plugin 'szymonmaszke/vimpyter'
 
 " Fzf
 set rtp+=~/.fzf
@@ -108,9 +115,20 @@ let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#completions_enabled = 1
 let g:jedi#smart_auto_mappings = 0
 
+
+" Code Folding
+set foldmethod=indent
+" Keep all folds open when a file is opened
+augroup OpenAllFoldsOnFileOpen
+    autocmd!
+    autocmd BufRead * normal zR
+augroup END
+
 "Macro for debugging in ipython
 " let @o = "o€FCfrom IPython import embed; embed(); raise ValueError()€FD"
-let @o = 'ofrom IPython import embed; embed(); raise ValueError()0w'
+let @o = 'ofrom IPython import embed; embed();0w'
+" let @O = 'Ofrom IPython import embed; embed();0w'
+let @i = 'ofrom IPython import embed; embed(); raise ValueError()0w'
 
 "Smooth Scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -297,9 +315,12 @@ augroup END
 " colorscheme onedark
 
 colorscheme nord
-" colorscheme vimterial_dark
+" colorscheme Atelier_EstuaryLight
+" set background=light
+" colorscheme pablo
 " colorscheme molokai
 " colorscheme blackboard
+" colorscheme PaperColor
 " colorscheme potato
 " colorscheme horizon
 " hi Normal ctermbg=none
