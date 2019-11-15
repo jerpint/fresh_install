@@ -1,17 +1,18 @@
 # Local aliases
 alias android-studio="cd /usr/local/android-studio/bin && ./studio.sh"
 alias sshp-mila="sshpass -f ~/.mila_login_pass.pass ssh mila"
-alias vim="nvim"
 alias v="nvim"
 alias ls="lsd"
 alias cwp="~/wallpapers/script.sh"
 alias xo="xdg-open"
-alias condact="conda activate"
+# alias condact="conda activate"
+alias condact="conda activate $(echo $PWD | grep -o -P '(?<=/home\/jerpint\/).*(?=\/)')"
 alias condex="conda deactivate"
 alias ipy="ipython"
 
 # Useful aliases
 alias count="ls -1 | wc -l" # Count files in a dir
+alias cdd="cd ~/Downloads"
 alias jpnb="jupyter notebook"
 alias tre="tree -La 1"
 alias cl="clear"
@@ -51,6 +52,7 @@ alias gaa='git add --all'
 alias gap='git apply'
 alias gapa='git add --patch'
 alias gau='git add -u'
+alias gaugcm='git add -u && git commit -m'
 alias gav='git add --verbose'
 alias gb='git branch'
 alias gbD='git branch -D'
