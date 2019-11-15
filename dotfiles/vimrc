@@ -54,7 +54,7 @@ Plugin 'https://github.com/terryma/vim-smooth-scroll'
 Plugin 'https://github.com/w0rp/ale'
 Plugin 'https://github.com/tommcdo/vim-exchange/'
 Plugin 'https://github.com/dhruvasagar/vim-vinegar'
-Plugin 'JamshedVesuna/vim-markdown-preview'
+" Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'https://github.com/brooth/far.vim'
 Plugin 'https://github.com/jlanzarotta/bufexplorer'
 Plugin 'https://github.com/mhinz/vim-startify'
@@ -143,6 +143,9 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
+" remap : to ;
+nnoremap ; :
+
 " Set lightline theme
 let g:lightline = {
       \ 'colorscheme': 'nord',
@@ -204,6 +207,7 @@ let g:ycm_min_num_of_chars_for_completion = 99
 
 " VimMarkdownPreview
 let vim_markdown_preview_github=1
+let vim_markdown_preview_toggle=1
 let vim_markdown_preview_hotkey='<C-m>'
 
 
@@ -331,17 +335,43 @@ colorscheme nord
 "
 
 
-" Autoremove trailing whitespace
-autocmd BufWritePre * %s/\s\+$//e
+" CtrlP
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+" nmap <leader>T :enew<cr>
+
+" Move to the next buffer
+nmap <leader>k :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>j :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
+
+
+" Search and replace visual selection
+vnoremap <Leader>f "hy:%s/<C-r>h//gc<left><left><left>
+
 
 set encoding=UTF-8
 
 " For .txt files and markdown files, enable spell checking
 au BufReadPost,BufNewFile *.md,*.txt,*.tex
     \ set spell spelllang=en_ca
+    " \ au! BufWritePre *
 
 " .py specific settings
-au BufNewFile,BufRead *.py
+au BufNewFile,BufRead,BufWritePre *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -349,3 +379,5 @@ au BufNewFile,BufRead *.py
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
+
+au BufWritePre *.py,*.*rc %s/\s\+$//e
