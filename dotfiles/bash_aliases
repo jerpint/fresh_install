@@ -10,6 +10,7 @@ alias condact="conda activate"
 alias condex="conda deactivate"
 alias ipy="ipython"
 eval $(thefuck --alias)
+alias rp="realpath"
 
 # Useful aliases
 alias count="ls -1 | wc -l" # Count files in a dir
