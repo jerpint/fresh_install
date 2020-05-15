@@ -1,8 +1,6 @@
 # Add zsh, vundle, and set up dotfiles
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
-git clone https://github.com/jerpint/fresh_install.git
-
 source ~/fresh_install/dotfiles/createsymlinks.sh
 
 # Add bash_aliases
