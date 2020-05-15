@@ -42,5 +42,12 @@ git config --global color.diff.old        "red bold"
 git config --global color.diff.new        "green bold"
 git config --global color.diff.whitespace "red reverse"
 
+# Install vim plugins
+vim -c 'PluginInstall' -c 'qa!'
+
+#Install LSD
+wget https://github.com/Peltoche/lsd/releases/download/0.17.0/lsd-musl_0.17.0_amd64.deb
+sudo dpkg -i lsd-musl_0.17.0_amd64.deb
+
 # source ~/.bashrc when done
 source ~/.bashrc
