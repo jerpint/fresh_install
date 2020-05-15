@@ -12,15 +12,15 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'git://github.com/airblade/vim-gitgutter.git'
 Plugin 'https://github.com/tpope/vim-fugitive.git'
 " plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
+Plugin 'L9'
+
 Plugin 'flazz/vim-colorschemes'
 Plugin 'https://github.com/joshdick/onedark.vim.git'
 Plugin 'arcticicestudio/nord-vim'
@@ -60,9 +60,9 @@ Plugin 'https://github.com/jlanzarotta/bufexplorer'
 Plugin 'https://github.com/mhinz/vim-startify'
 Plugin 'https://github.com/wincent/terminus'
 Plugin 'https://github.com/vim-scripts/ZoomWin'
-
+" Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " Transpose text matrices
-Plugin 'https://github.com/salsifis/vim-transpose'
+" Plugin 'https://github.com/salsifis/vim-transpose'
 
 " Transparent backgrounds
 " Plugin 'https://github.com/miyakogi/seiya.vim'
@@ -73,7 +73,7 @@ Plugin 'https://github.com/salsifis/vim-transpose'
 
 "Python Plugins
 Plugin 'https://github.com/Valloric/YouCompleteMe'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'https://github.com/jeetsukumaran/vim-pythonsense'
 Plugin 'deoplete-plugins/deoplete-jedi'
@@ -106,23 +106,27 @@ let g:fzf_colors =
 "Highlight searches while typing
 set incsearch
 
+"Dont wrap
+set nowrap
+
 "default to case insensitive search
 set ic
 
 " Jedi-vim setup
 let g:jedi#popup_on_dot = 0
 let g:jedi#use_splits_not_buffers = "left"
-let g:jedi#completions_enabled = 1
-let g:jedi#smart_auto_mappings = 0
+let g:jedi#completions_enabled = 0
+let g:pymode_rope = 0
+let g:jedi#smart_auto_mappings = 1
 
 
 " Code Folding
-set foldmethod=indent
-" Keep all folds open when a file is opened
-augroup OpenAllFoldsOnFileOpen
-    autocmd!
-    autocmd BufRead * normal zR
-augroup END
+" set foldmethod=indent
+" " Keep all folds open when a file is opened
+" augroup OpenAllFoldsOnFileOpen
+"     autocmd!
+"     autocmd BufRead * normal zR
+" augroup END
 
 "Macro for debugging in ipython
 " let @o = "o€FCfrom IPython import embed; embed(); raise ValueError()€FD"
@@ -143,8 +147,14 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
+" Fix :W to :w
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
+
 " remap : to ;
-nnoremap ; :
+" nnoremap ; :
 
 " Set lightline theme
 let g:lightline = {
@@ -320,7 +330,7 @@ augroup END
 
 colorscheme nord
 " colorscheme Atelier_EstuaryLight
-" set background=light
+set background=light
 " colorscheme pablo
 " colorscheme molokai
 " colorscheme blackboard

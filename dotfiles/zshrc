@@ -121,6 +121,12 @@ setopt appendhistory
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Pywall
+# export PATH="${PATH}:${HOME}/.local/bin/"
+# Import colorscheme from 'wal' asynchronously
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+# (cat ~/.cache/wal/sequences &)
 
 # Spawn terminal with tmux
 if [ "$TMUX" = "" ]; then tmux; fi
@@ -144,6 +150,9 @@ fi
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 
+# Add Sass to PATH
+export PATH=$HOME/dart-sass:$PATH
+
 # pipenv path
 export PATH=$HOME/.local/bin:$PATH
 
@@ -162,4 +171,9 @@ prompt_context() {
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=${HOME}/go
 
+# Modify some key bindings
+# xmodmap -e "keycode 9 = grave asciitilde grave asciitilde"
+# xmodmap -e "keycode 49 = Home"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

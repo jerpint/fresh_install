@@ -5,10 +5,11 @@ alias v="nvim"
 alias ls="lsd"
 alias cwp="~/wallpapers/script.sh"
 alias xo="xdg-open"
-# alias condact="conda activate"
-alias condact="conda activate $(echo $PWD | grep -o -P '(?<=/home\/jerpint\/).*(?=\/)')"
+alias condact="conda activate"
+# alias condact="conda activate $(echo $PWD | grep -o -P '(?<=/home\/jerpint\/).*(?=\/)')"
 alias condex="conda deactivate"
 alias ipy="ipython"
+eval $(thefuck --alias)
 
 # Useful aliases
 alias count="ls -1 | wc -l" # Count files in a dir
