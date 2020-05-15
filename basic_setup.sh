@@ -49,5 +49,9 @@ vim -c 'PluginInstall' -c 'qa!'
 wget https://github.com/Peltoche/lsd/releases/download/0.17.0/lsd-musl_0.17.0_amd64.deb
 sudo dpkg -i lsd-musl_0.17.0_amd64.deb
 
+#Install conda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+
 # source ~/.bashrc when done
 source ~/.bashrc
