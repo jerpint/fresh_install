@@ -22,6 +22,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'L9'
 
 Plugin 'flazz/vim-colorschemes'
+Plugin 'https://github.com/vim-python/python-syntax/'
 Plugin 'https://github.com/joshdick/onedark.vim.git'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'larsbs/vimterial_dark'
@@ -34,6 +35,7 @@ Plugin 'https://github.com/pacha/vem-tabline/'
 Plugin 'mgee/lightline-bufferline'
 
 Plugin 'git://github.com/tpope/vim-surround.git'
+Plugin 'https://github.com/tpope/vim-eunuch'
 
 " NERDTree
 Plugin 'https://github.com/scrooloose/nerdtree.git'
@@ -60,16 +62,7 @@ Plugin 'https://github.com/jlanzarotta/bufexplorer'
 Plugin 'https://github.com/mhinz/vim-startify'
 Plugin 'https://github.com/wincent/terminus'
 Plugin 'https://github.com/vim-scripts/ZoomWin'
-" Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-" Transpose text matrices
-" Plugin 'https://github.com/salsifis/vim-transpose'
 
-" Transparent backgrounds
-" Plugin 'https://github.com/miyakogi/seiya.vim'
-
-
-" Multi cursors
-" Plugin 'https://github.com/mg979/vim-visual-multi'
 
 "Python Plugins
 Plugin 'https://github.com/Valloric/YouCompleteMe'
@@ -78,9 +71,6 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'https://github.com/jeetsukumaran/vim-pythonsense'
 Plugin 'deoplete-plugins/deoplete-jedi'
 Plugin 'ntk148v/vim-horizon'
-
-"Jupyter notebooks
-" Plugin 'szymonmaszke/vimpyter'
 
 " Fzf
 set rtp+=~/.fzf
@@ -103,6 +93,13 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+" enable LS using FZF
+command! -bang -complete=dir -nargs=* LS
+    \ call fzf#run(fzf#wrap({'source': 'ls', 'dir': <q-args>}, <bang>0))
+
+" Remap ctrl+f to use fzf
+nmap <silent> <c-f> :Files<CR>
+
 "Highlight searches while typing
 set incsearch
 
@@ -120,16 +117,7 @@ let g:pymode_rope = 0
 let g:jedi#smart_auto_mappings = 1
 
 
-" Code Folding
-" set foldmethod=indent
-" " Keep all folds open when a file is opened
-" augroup OpenAllFoldsOnFileOpen
-"     autocmd!
-"     autocmd BufRead * normal zR
-" augroup END
-
 "Macro for debugging in ipython
-" let @o = "o€FCfrom IPython import embed; embed(); raise ValueError()€FD"
 let @o = 'ofrom IPython import embed; embed();0w'
 " let @O = 'Ofrom IPython import embed; embed();0w'
 let @i = 'ofrom IPython import embed; embed(); raise ValueError()0w'
@@ -137,8 +125,8 @@ let @i = 'ofrom IPython import embed; embed(); raise ValueError()0w'
 "Smooth Scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+" noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+" noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " navigate tabs
 map tn :tabnew<Space>
@@ -156,14 +144,6 @@ nnoremap tl :tablast<CR>
 " remap : to ;
 " nnoremap ; :
 
-" Set lightline theme
-let g:lightline = {
-      \ 'colorscheme': 'nord',
-      \ }
-
-let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 
 " NerdCommenter:
@@ -213,6 +193,7 @@ let g:indentLine_enabled = 0
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>h  :vsplit<CR> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_min_num_of_chars_for_completion = 99
 
 " VimMarkdownPreview
@@ -251,12 +232,11 @@ nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
-"
-"split navigations
-" map <C-J> <C-W><C-J>
-" map <C-K> <C-W><C-K>
-" map <C-L> <C-W><C-L>
-" map <C-H> <C-W><C-H>
+
+" CtrlP
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
 
 " highlight words on search
 :set hlsearch
@@ -319,45 +299,44 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" ========== THEMES ============
 set t_Co=256
-augroup nord-overrides
-  autocmd!
-  autocmd ColorScheme nord highlight Comment ctermfg=8
-  autocmd ColorScheme nord highlight Visual ctermbg=8 "set color 8 in term to #788398
-augroup END
+" papercolor
+colorscheme PaperColor
+set background=dark
+let g:lightline = { 'colorscheme': 'PaperColor' }
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
 
-" colorscheme onedark
+" Toggle between light and dark mode
+function! BgToggleSol()
+    if (&background == "light")
+      set background=dark
+    else
+       set background=light
+    endif
+endfunction
+nnoremap <silent> <leader>d :call BgToggleSol()<cr>
 
-colorscheme nord
-" colorscheme Atelier_EstuaryLight
-set background=light
-" colorscheme pablo
-" colorscheme molokai
-" colorscheme blackboard
-" colorscheme PaperColor
-" colorscheme potato
-" colorscheme horizon
-" hi Normal ctermbg=none
-" hi NonText ctermbg=none
-" hi LineNr ctermbg=none
-" hi ALEErrorLine ctermbg=none
-" let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
-"
+" highlight builtins
+let g:PaperColor_Theme_Options = {
+  \   'language': {
+  \     'python': {
+  \       'highlight_builtins' : 1
+  \     },
+  \     'cpp': {
+  \       'highlight_standard_library': 1
+  \     },
+  \     'c': {
+  \       'highlight_builtins' : 1
+  \     }
+  \   }
+  \ }
 
-
-" CtrlP
-" This allows buffers to be hidden if you've modified a buffer.
-" This is almost a must if you wish to use buffers in this way.
-set hidden
-
-" To open a new empty buffer
-" This replaces :tabnew which I used to bind to this mapping
-" nmap <leader>T :enew<cr>
-
-" Move to the next buffer
+" Move to the prev/next buffer
 nmap <leader>k :bnext<CR>
-
-" Move to the previous buffer
 nmap <leader>j :bprevious<CR>
 
 " Close the current buffer and move to the previous one
@@ -366,8 +345,6 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
-
-
 
 " Search and replace visual selection
 vnoremap <Leader>f "hy:%s/<C-r>h//gc<left><left><left>
@@ -385,7 +362,7 @@ au BufNewFile,BufRead,BufWritePre *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    " \ set textwidth=79 |
+    \ set textwidth=100 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
