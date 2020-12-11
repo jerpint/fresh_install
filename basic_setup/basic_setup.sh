@@ -4,9 +4,13 @@ echo "# Use ZSH" >> ~/.bashrc
 echo "export SHELL=/bin/zsh" >> ~/.bashrc
 echo "exec /bin/zsh -l" >> ~/.bashrc
 
-# vim keybinginds
+# zsh vim keybinginds
 echo "# Use vi key-bindings" >> ~/.zshrc
 echo "bindkey -v" >> ~/.zshrc
+
+# zsh reverse search
+echo "# Reverse search" >> ~/.zshrc
+echo "bindkey '^R' history-incremental-search-backward" >> ~/.zshrc
 
 # Add bash_aliases
 wget -O ~/.bash_aliases https://raw.githubusercontent.com/jerpint/fresh_install/master/basic_setup/bash_aliases  
