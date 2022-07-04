@@ -2,15 +2,25 @@
 alias android-studio="cd /usr/local/android-studio/bin && ./studio.sh"
 alias sshp-mila="sshpass -f ~/.mila_login_pass.pass ssh mila"
 alias v="nvim"
+alias vim="nvim"
+alias vi="nvim"
 alias ls="lsd"
 alias cwp="~/wallpapers/script.sh"
 alias xo="xdg-open"
 alias condact="conda activate"
+alias ca="conda activate"
+alias psag="ps aux | grep"
+alias pip='noglob pip'
 # alias condact="conda activate $(echo $PWD | grep -o -P '(?<=/home\/jerpint\/).*(?=\/)')"
 alias condex="conda deactivate"
 alias ipy="ipython"
+alias py="python"
 eval $(thefuck --alias)
 alias rp="realpath"
+alias flk1="flake8 --ignore D,W504 --max-line-length=100 ."
+alias flk2="flake8 --select D --ignore D104,D100,D401 --docstring-convention google --exclude tests/"
+alias gundo="git reset HEAD~" # Git Undo Last Commit
+
 
 # Useful aliases
 alias count="ls -1 | wc -l" # Count files in a dir
@@ -29,7 +39,7 @@ alias vimrc="vim ~/.vimrc"
 alias svimrc="source ~/.vimrc"
 alias penv="pipenv"
 alias penvs="pipenv shell"
-alias vvim="vim -u NONE" # Vim with no plugins
+alias vv="vim --clean" # Vim with default plugins
 
 # Oh-my-zsh aliases
 alias ...='../..'

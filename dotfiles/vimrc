@@ -20,18 +20,22 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 Plugin 'L9'
+Plugin 'sonph/onehalf', { 'rtp': 'vim'}
 
-Plugin 'flazz/vim-colorschemes'
+" Plugin 'flazz/vim-colorschemes'
 Plugin 'https://github.com/vim-python/python-syntax/'
 Plugin 'https://github.com/joshdick/onedark.vim.git'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'larsbs/vimterial_dark'
 Plugin 'https://github.com/NLKNguyen/papercolor-theme'
+Plugin 'https://github.com/scheakur/vim-scheakur'
 Plugin 'https://github.com/therubymug/vim-pyte'
 Plugin 'https://github.com/benburrill/potato-colors'
-Plugin 'Yggdroot/indentLine'
 Plugin 'https://github.com/itchyny/lightline.vim'
 Plugin 'https://github.com/pacha/vem-tabline/'
+Plugin 'sbdchd/neoformat'
+" Plugin 'nvim-treesitter/nvim-treesitter'
+
 Plugin 'mgee/lightline-bufferline'
 
 Plugin 'git://github.com/tpope/vim-surround.git'
@@ -61,7 +65,8 @@ Plugin 'https://github.com/brooth/far.vim'
 Plugin 'https://github.com/jlanzarotta/bufexplorer'
 Plugin 'https://github.com/mhinz/vim-startify'
 Plugin 'https://github.com/wincent/terminus'
-Plugin 'https://github.com/vim-scripts/ZoomWin'
+" Plugin 'https://github.com/vim-scripts/ZoomWin'
+Plugin 'https://github.com/preservim/tagbar'
 
 
 "Python Plugins
@@ -71,9 +76,12 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'https://github.com/jeetsukumaran/vim-pythonsense'
 Plugin 'deoplete-plugins/deoplete-jedi'
 Plugin 'ntk148v/vim-horizon'
+Plugin 'https://github.com/heavenshell/vim-pydocstring'
+Plugin 'chrisbra/csv.vim'
 
 " Fzf
 set rtp+=~/.fzf
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
@@ -99,6 +107,9 @@ command! -bang -complete=dir -nargs=* LS
 
 " Remap ctrl+f to use fzf
 nmap <silent> <c-f> :Files<CR>
+
+" Remap leader+b to lint file using black
+nmap <silent> <leader>b :ALEFix black<CR>
 
 "Highlight searches while typing
 set incsearch
@@ -134,6 +145,10 @@ nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
+
+" navigate wrapped lines
+nnoremap j gj
+nnoremap k gk
 
 " Fix :W to :w
 :command WQ wq
@@ -202,6 +217,9 @@ let vim_markdown_preview_toggle=1
 let vim_markdown_preview_hotkey='<C-m>'
 
 
+" Linting settings
+let g:ale_python_flake8_options = '--max-line-length=100'
+
 "python with virtualenv support for YouCompleteMe
 "Source https://realpython.com/vim-and-python-a-match-made-in-heaven/
 
@@ -214,7 +232,7 @@ let g:NERDTreeDirArrowExpandable = "\u00a0"
 let g:NERDTreeDirArrowCollapsible = "\u00a0"
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
 let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "*",
     \ "Staged"    : "+",
     \ "Untracked" : "✭",
@@ -242,7 +260,7 @@ set hidden
 :set hlsearch
 " undo highlight
 nmap <C-n> :noh <CR>
-filetype off                  " required
+" filetype off                  " required
 
 " enable syntax highlighting
 syntax enable
@@ -285,11 +303,14 @@ set backspace=indent,eol,start
 let python_highlight_all = 1
 syntax on
 
+" Tagbar
+nmap <C-t> :TagbarToggle<CR>
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+" filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -301,39 +322,55 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " ========== THEMES ============
+" Termguicolors
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
 set t_Co=256
-" papercolor
-colorscheme PaperColor
-set background=dark
-let g:lightline = { 'colorscheme': 'PaperColor' }
-let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
+syntax on
+set cursorline
+colorscheme onedark
+let g:airline_theme='onedark'
+" let g:lightline = { 'colorscheme': 'onehalfdark' }
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified' ] ],
+      \     'right': [['lineinfo'], ['percent'], ['filetype']]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+let g:airline_theme='onedark'
+
+" colorscheme two-firewatch
+" colorscheme nord
+" colorscheme PaperColor
+" set background=dark
+" let g:lightline = { 'colorscheme': 'PaperColor' }
+" let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+" let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+" let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 " Toggle between light and dark mode
 function! BgToggleSol()
     if (&background == "light")
-      set background=dark
+      colorscheme onedark
     else
-       set background=light
+      colorscheme onehalflight
     endif
 endfunction
 nnoremap <silent> <leader>d :call BgToggleSol()<cr>
 
-" highlight builtins
-let g:PaperColor_Theme_Options = {
-  \   'language': {
-  \     'python': {
-  \       'highlight_builtins' : 1
-  \     },
-  \     'cpp': {
-  \       'highlight_standard_library': 1
-  \     },
-  \     'c': {
-  \       'highlight_builtins' : 1
-  \     }
-  \   }
-  \ }
+"pydocstring
+let g:pydocstring_doq_path = '/home/jerpint/.local/bin/doq'
+let g:pydocstring_formatter = 'google'
+nmap <silent> <ctrl-_> <Plug>(pydocstring)
 
 " Move to the prev/next buffer
 nmap <leader>k :bnext<CR>
@@ -342,6 +379,9 @@ nmap <leader>j :bprevious<CR>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
+
+" focus on single window full screen
+:noremap ts :tab split<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
@@ -362,7 +402,7 @@ au BufNewFile,BufRead,BufWritePre *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=100 |
+    \ set textwidth=120 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
